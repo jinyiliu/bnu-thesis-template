@@ -1,0 +1,41 @@
+% !Mode:: "TeX:UTF-8"
+% 
+% 编译说明
+%		必须使用 2012 texlive 进行编译
+%		使用 XeLaTeX 编译引擎
+%		在 MacBook 中推荐使用编译软件 Texpad
+%
+%
+%		
+
+
+\documentclass[bachelor, twoside]{bnuthesis}
+	\usepackage{bnutils}				
+	% 调用宏包，使用 GB/T 7714-2015 参考文献著录格式
+	\usepackage{gbt7714}
+	
+	\begin{document}
+	\graphicspath{{figures/}}
+	
+	\frontmatter
+	\input{data/cover}
+	\makecover
+	
+	\tableofcontents
+	
+	\mainmatter
+	\include{data/chap1}
+	\include{data/chap2}
+	
+	% 使用 gbt7714 宏包不需要 bibliographystyle，否则报错
+	% \bibliographystyle{bnubib}
+	\bibliography{ref/refs}
+	
+	\begin{appendix}
+	\input{data/appendix}
+	\end{appendix}
+	
+	\include{data/paper}
+	\include{data/ack}
+
+\end{document}

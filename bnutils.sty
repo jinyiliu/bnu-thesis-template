@@ -1,0 +1,137 @@
+\ProvidesPackage{bnutils}[2014/03/12 1.52 put any packages you would like to use here]
+
+
+% 定义自己常用的东西
+\newcommand{\china}{中华人民共和国}
+\newcommand{\cmb}{微波背景辐射}
+
+
+% 解决报错 Too many math alphabets
+% 参考 https://texfaq.org/FAQ-manymathalph
+\newcommand{\hmmax}{0}
+\newcommand{\bmmax}{0}
+
+
+% 可以自定义加载的宏包
+\RequirePackage{multirow}						% 表格中支持跨行
+\RequirePackage{longtable}						% 跨页表格
+\RequirePackage{tabularx}						% 固定宽度的表格
+\RequirePackage{float}							% 确定浮动对象的位置
+\RequirePackage{bm}
+\RequirePackage{amssymb}
+
+
+
+% 天文期刊缩写
+% Standard abbreviations of the current astron./astrophys-journals
+\let\jnl@style=\rmfamily
+\def\ref@jnl#1{{\jnl@style#1}}%
+\newcommand\aj{\ref@jnl{AJ}}%
+          % Astronomical Journal
+\newcommand\araa{\ref@jnl{ARA\&A}}%
+          % Annual Review of Astron and Astrophys
+\newcommand\apj{\ref@jnl{ApJ}}%
+          % Astrophysical Journal
+\newcommand\apjl{\ref@jnl{ApJ}}%
+          % Astrophysical Journal, Letters
+\newcommand\apjs{\ref@jnl{ApJS}}%
+          % Astrophysical Journal, Supplement Series
+\newcommand\ao{\ref@jnl{Appl.~Opt.}}%
+          % Applied Optics
+\newcommand\apss{\ref@jnl{Ap\&SS}}%
+          % Astrophysics and Space Science
+\newcommand\aap{\ref@jnl{A\&A}}%
+          % Astronomy and Astrophysics
+\newcommand\aapr{\ref@jnl{A\&A~Rev.}}%
+          % Astronomy and Astrophysics Reviews
+\newcommand\aaps{\ref@jnl{A\&AS}}%
+          % Astronomy and Astrophysics, Supplement Series
+\newcommand\azh{\ref@jnl{AZh}}%
+          % Astronomicheskii Zhurnal
+\newcommand\baas{\ref@jnl{BAAS}}%
+          % Bulletin of the AAS
+\newcommand\chjaa{\ref@jnl{ChJAA\,(Chin. J. Astron. Astrophys.)}}
+\newcommand\cjaa {\ref@jnl{ChJAA\,(Chin. J. Astron. Astrophys.)}}
+          % Chinese Journal Astronomy Astrophysics
+\newcommand\ibvs{\ref@jnl{IBVS}}
+          % Infoormation Bulletin on Variable Stars
+\newcommand\jrasc{\ref@jnl{JRASC}}%
+          % Journal of the RAS of Canada
+\newcommand\memras{\ref@jnl{MmRAS}}%
+          % Memoirs of the RAS
+\newcommand\mnras{\ref@jnl{MNRAS}}%
+          % Monthly Notices of the RAS
+\newcommand\pra{\ref@jnl{Phys.~Rev.~A}}%
+          % Physical Review A: General Physics
+\newcommand\prb{\ref@jnl{Phys.~Rev.~B}}%
+          % Physical Review B: Solid State
+\newcommand\prc{\ref@jnl{Phys.~Rev.~C}}%
+          % Physical Review C
+\newcommand\prd{\ref@jnl{Phys.~Rev.~D}}%
+          % Physical Review D
+\newcommand\pre{\ref@jnl{Phys.~Rev.~E}}%
+          % Physical Review E
+\newcommand\prl{\ref@jnl{Phys.~Rev.~Lett.}}%
+          % Physical Review Letters
+\newcommand\pasp{\ref@jnl{PASP}}%
+          % Publications of the ASP
+\newcommand\pasj{\ref@jnl{PASJ}}%
+          % Publications of the ASJ
+\newcommand\qjras{\ref@jnl{QJRAS}}%
+          % Quarterly Journal of the RAS
+\newcommand\raa {\ref@jnl{Research in Astron. Astrophys.\,(RAA)}}
+          % Research in Astronomy Astrophysics
+\newcommand\skytel{\ref@jnl{S\&T}}%
+          % Sky and Telescope
+\newcommand\solphys{\ref@jnl{Sol.~Phys.}}%
+          % Solar Physics
+\newcommand\sovast{\ref@jnl{Soviet~Ast.}}%
+          % Soviet Astronomy
+\newcommand\ssr{\ref@jnl{Space~Sci.~Rev.}}%
+          % Space Science Reviews
+\newcommand\zap{\ref@jnl{ZAp}}%
+          % Zeitschrift fuer Astrophysik
+\newcommand\nat{\ref@jnl{Nature}}%
+          % Nature
+\newcommand\iaucirc{\ref@jnl{IAU~Circ.}}%
+          % IAU Cirulars
+\newcommand\aplett{\ref@jnl{Astrophys.~Lett.}}%
+          % Astrophysics Letters
+\newcommand\apspr{\ref@jnl{Astrophys.~Space~Phys.~Res.}}%
+          % Astrophysics Space Physics Research
+\newcommand\bain{\ref@jnl{Bull.~Astron.~Inst.~Netherlands}}%
+          % Bulletin Astronomical Institute of the Netherlands
+\newcommand\fcp{\ref@jnl{Fund.~Cosmic~Phys.}}%
+          % Fundamental Cosmic Physics
+\newcommand\gca{\ref@jnl{Geochim.~Cosmochim.~Acta}}%
+          % Geochimica Cosmochimica Acta
+\newcommand\grl{\ref@jnl{Geophys.~Res.~Lett.}}%
+          % Geophysics Research Letters
+\newcommand\jcp{\ref@jnl{J.~Chem.~Phys.}}%
+          % Journal of Chemical Physics
+\newcommand\jgr{\ref@jnl{J.~Geophys.~Res.}}%
+          % Journal of Geophysics Research
+\newcommand\jqsrt{\ref@jnl{J.~Quant.~Spec.~Radiat.~Transf.}}%
+          % Journal of Quantitiative Spectroscopy and Radiative Trasfer
+\newcommand\memsai{\ref@jnl{Mem.~Soc.~Astron.~Italiana}}%
+          % Mem. Societa Astronomica Italiana
+\newcommand\nphysa{\ref@jnl{Nucl.~Phys.~A}}%
+          % Nuclear Physics A
+\newcommand\physrep{\ref@jnl{Phys.~Rep.}}%
+          % Physics Reports
+\newcommand\physscr{\ref@jnl{Phys.~Scr}}%
+          % Physica Scripta
+\newcommand\planss{\ref@jnl{Planet.~Space~Sci.}}%
+          % Planetary Space Science
+\newcommand\procspie{\ref@jnl{Proc.~SPIE}}%
+          % Proceedings of the SPIE
+\newcommand\sci{\ref@jnl{Sci.}}
+          % Science
+\let\astap=\aap
+\let\aas=\aaps
+\let\apjlett=\apjl
+\let\apjsupp=\apjs
+\let\applopt=\ao
+
+
+\endinput
