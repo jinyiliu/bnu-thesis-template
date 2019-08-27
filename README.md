@@ -1,4 +1,4 @@
-# BnuThesisBachelor
+# bnu-bachelor-thesis
 
 北京师范大学学士论文模板，基于[北师大学位论文Latex模板](http://gerry.lamost.org/blog/?p=811)和 GitHub 上的已有项目 [BNUBachelorThesis](https://github.com/xysmlx/BNUBachelorThesis) 修改。使用此模板需要先了解和掌握 Latex 和 Bibtex 基本知识，学习 Latex 可以参考北师大天文系余恒老师整理的 [LATEX 相关资源](http://202.112.85.96/wiki/doku.php/latex;resources)。
 
