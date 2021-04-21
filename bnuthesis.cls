@@ -151,16 +151,6 @@
 
 
 
-
-% 可拷贝的 PDF
-\ifbnu@dvips\else
-	\ifbnu@xetex\else
-		\RequirePackage{cmap}
-	\fi
-\fi
-
-
-
 % 定义类环境宏包
 \RequirePackage[amsmath, thmmarks, hyperref]{ntheorem}				% amsmath 用来兼容 ams-tex 宏包
 \RequirePackage{array, longtable}									% 表格控制
@@ -366,22 +356,7 @@
 
 % 脚注
 % 从 perpage.sty 中抽取代码，使 footnote 按页编号
-\newcommand*\MakePerPage[2][\@ne]{%
-	\expandafter\def\csname c@pchk@#2\endcsname{\c@pchk@{#2}{#1}}%
-	\newcounter{pcabs@#2}%
-	\@addtoreset{pchk@#2}{#2}
-	}
-\def\new@pagectr#1{\@newl@bel{pchk@#1}}
-\def\c@pchk@#1#2{\z@=\z@
-	\begingroup
-	\expandafter\let\expandafter\next\csname pchk@#1@\arabic{pcabs@#1}\endcsname
-	\addtocounter{pcabs@#1}\@ne
-	\expandafter\ifx\csname pchk@#1@\arabic{pcabs@#1}\endcsname\next
-	\else \setcounter{#1}{#2}\fi
-	\protected@edef\next{%
-    	\string\new@pagectr{#1}{\arabic{pcabs@#1}}{\noexpand\thepage}}%
-	\protected@write\@auxout{}{\next}%
-	\endgroup\global\z@}
+\RequirePackage{perpage}
 \MakePerPage{footnote}
 
 
