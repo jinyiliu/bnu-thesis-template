@@ -155,7 +155,9 @@
 % 可拷贝的 PDF
 \ifbnu@dvips\else
 	\ifbnu@xetex\else
-		\RequirePackage{ccmap}\fi\fi
+		\RequirePackage{cmap}
+	\fi
+\fi
 
 
 
