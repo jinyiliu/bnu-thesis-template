@@ -115,20 +115,20 @@
 	\newcommand*{\fontsong}{SimSun}					% 宋体
 	\newcommand*{\fonthei}{SimHei}					% 黑体
 	\newcommand*{\fontkai}{KaiTi}					% 楷体
-	\newcommand*{\fontfs}{FangSong}					% 仿宋
-	\newcommand*{\fontli}{LiSu}						% 隶书
+	\newcommand*{\fontfs}{FangSong}					% 仿宋
+	\newcommand*{\fontli}{LiSu}					% 隶书
 	\newcommand*{\fontyou}{YouYuan}					% 幼圆
 	
 	
-	\setCJKmainfont[AutoFakeBold = {2.5}, ItalicFont = \fontkai]{\fontsong}		% 主要字体
-	\setCJKsansfont[AutoFakeBold = {3}]{\fonthei}								% 无衬线字体
-	\setCJKmonofont{\fontkai}													% 等宽字体
-	\setCJKfamilyfont{song}[AutoFakeBold = {2.5}]{\fontsong}
-	\setCJKfamilyfont{hei}[AutoFakeBold = {3}]{\fonthei}
-	\setCJKfamilyfont{kai}{\fontkai}
-	\setCJKfamilyfont{fs}{\fontfs}
-	\setCJKfamilyfont{li}{\fontli}
-	\setCJKfamilyfont{you}{\fontyou}
+    \setCJKmainfont[Path=fonts/, AutoFakeBold = {2.5}, ItalicFont = simkai.ttf]{simsun.ttc}  % 主要字体
+    \setCJKsansfont[Path=fonts/, AutoFakeBold = {3}]{simhei.ttf}        % 无衬线字体
+    \setCJKmonofont[Path=fonts/]{simkai.ttf}             % 等宽字体
+    \setCJKfamilyfont{song}[Path=fonts/, AutoFakeBold = {2.5}]{simsun.ttc}
+    \setCJKfamilyfont{hei}[Path=fonts/, AutoFakeBold = {3}]{simhei.ttf}
+    \setCJKfamilyfont{kai}[Path=fonts/]{simkai.ttf}
+    \setCJKfamilyfont{fs}[Path=fonts/]{simfang.ttf}
+    \setCJKfamilyfont{li}[Path=fonts/]{simli.ttf}
+    \setCJKfamilyfont{you}[Path=fonts/]{simyou.ttf}
 	
 	
 	\setmainfont{Times New Roman}
@@ -174,7 +174,6 @@
 	breaklinks=true,
 	colorlinks=false,
 	plainpages=false,
-	pdfpagelabels,
 	pdfborder=0 0 0}
 
 
