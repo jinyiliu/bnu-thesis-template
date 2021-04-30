@@ -103,7 +103,7 @@
 % 中文支持宏包
 \ifbnu@xetex
 	\RequirePackage{xltxtra, xunicode}
-	\RequirePackage[BoldFont,normalindentfirst]{xeCJK}
+	\RequirePackage[BoldFont]{xeCJK}
 	\RequirePackage{CJKnumb}
 	% 全角标点符号
 	\punctstyle{quanjiao}
