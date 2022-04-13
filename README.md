@@ -20,7 +20,7 @@
 ### 编译说明
 
 1. 模板主要针对 MacBook 用户，下载模板之后，务必安装文件夹 fonts 中的字体
-2. 需要使用 Texlive 2012 的版本。MacBook 用户可以根据 http://www.tug.org/mactex/faq/3-4.html 中的指示下载 MacTeX 2012，如果速度过慢，也可以到[我的网盘](https://pan.baidu.com/s/1Qarn0dDzpgtmZ2i8wCZCIQ)中下载 mactex20120701.pkg 并进行安装
+2. 需要使用 Texlive 2012 的版本。MacBook 用户可以根据 http://www.tug.org/mactex/faq/3-4.html 中的指示下载 MacTeX 2012，如果速度过慢，也可以到[我的网盘](https://www.aliyundrive.com/s/XSkPxt34cX2)中下载 mactex20120701.pkg 并进行安装
 3. 必须使用 XeLaTeX 编译引擎进行编译（这里我不清楚为什么 pdfLaTeX 在我的电脑上无法编译）才能编译通过
 4. 关于 bibtex 的相关知识可以自行维基，gbt7714 使用方法可以参考 GitHub 项目 [gbt7714-bibtex-style](https://github.com/CTeX-org/gbt7714-bibtex-style) 的项目主页，也可以直接查看 [gbt7714.pdf](gbt7714.pdf) 文件
 5. 直接打开 main.pdf 查看模板使用方法
