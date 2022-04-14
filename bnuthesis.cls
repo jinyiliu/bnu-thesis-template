@@ -93,10 +93,10 @@
 \RequirePackage{amsmath, amssymb, amsfonts}				% AMS-TEX 宏包，用来排出更漂亮的公式
 \RequirePackage{txfonts}								% 用很爽的 txfonts 替换 mathptmx 宏包
 \RequirePackage{graphicx}								% 图形支持宏包
-\RequirePackage{titletoc}								% 
+\RequirePackage{titletoc}
 \RequirePackage[config]{subfig}							% 并排图形
 \RequirePackage{indentfirst}							% 首行缩进
-\RequirePackage[neverdecrease]{paralist}					% 更好的列表环境
+\RequirePackage[neverdecrease]{paralist}				% 更好的列表环境
 
 
 
@@ -212,7 +212,7 @@
 
 
 % 重定义字体命令
-\newcommand{\song}{\CJKfamily{song}}				% 宋体
+\newcommand{\song}{\CJKfamily{song}}			% 宋体
 \def\songti{\song}
 \newcommand{\fs}{\CJKfamily{fs}}				% 仿宋
 \def\fangsong{\fs}
@@ -285,7 +285,7 @@
 \setlength{\hoffset}{-1in} 							% 清空默认页边距	
 \ifbnu@twoside
 	\setlength{\oddsidemargin}{2.5cm}				% 奇数页左边距
-	\setlength{\evensidemargin}{2cm}					% 偶数页左边距
+	\setlength{\evensidemargin}{2cm}				% 偶数页左边距
 \else
 	\setlength{\oddsidemargin}{2.5cm}				% 奇数页左边距
 	\setlength{\evensidemargin}{\oddsidemargin}		% 偶数页左边距
@@ -738,7 +738,7 @@
 		\vspace*{-1.8cm}
 		\parbox[b][2.4cm][t]{\textwidth}{\ifbnu@secret\hfill{\sihao\bnu@secret@title}\else\rule{1cm}{0cm}\fi}
 		\vskip0.3cm
-		\includegraphics[width=7.96cm]{BNU_name.jpg}
+		\includegraphics[width=7.96cm]{BNU_name_red.jpg}
 		
 		
 		\parbox[t][7cm][t]{\paperwidth-6.5cm}{
@@ -1096,4 +1096,4 @@
 
 
 
-% End of file bnuthesis.cls
+% End of file 'bnuthesis.cls'.
