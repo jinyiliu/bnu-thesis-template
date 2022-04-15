@@ -64,8 +64,13 @@
 \LoadClass[12pt, a4paper, openany]{book}
 
 
-% 指定论文类型为学士论文
-\ifbnu@bachelor\relax\else\fi
+% 指定论文类型为学士、硕士、博士论文
+\ifbnu@bachelor\relax\else
+  \ifbnu@master\relax\else
+    \ifbnu@doctor\relax\else
+      \ClassError{bnuthesis}%
+                 {You have to specify one of thesis options: bachelor, master or doctor.}{}
+\fi
 
 % 检查用户指定的选项和实际编译命令是否冲突
 \RequirePackage{ifpdf, ifxetex}
@@ -155,7 +160,7 @@
 \RequirePackage[amsmath, thmmarks, hyperref]{ntheorem}				% amsmath 用来兼容 ams-tex 宏包
 \RequirePackage{array, longtable}									% 表格控制
 \RequirePackage{booktabs}											% 三线表
-\RequirePackage[numbers,super,sort&compress]{natbib}					% 参考文献引用宏包
+\RequirePackage[numbers,super,sort&compress]{natbib}				% 参考文献引用宏包
 
 
 % 生成有书签的 pdf 及其开关，请结合 gbk2uni 避免书签乱码
@@ -218,7 +223,7 @@
 \def\youyuan{\you}
 
 
-% 避免字号选择和行距的紧耦合。
+% 避免字号选择和行距的紧耦合
 % 所有字号定义时为单倍行距，并提供制定行距的倍数
 \newlength\bnu@linespace
 \newcommand{\bnu@choosefont}[2]{%
@@ -251,7 +256,7 @@
 
 
 
-% 正文小四号字，行距为固定值 20 磅
+% 正文小四号字，行距为固定值 20pt
 \renewcommand\normalsize{%
 	\@setfontsize\normalsize{12bp}{20bp}
 	\abovedisplayskip=10bp \@plus 2bp \@minus 2bp
@@ -394,7 +399,7 @@
 
 
 % 公式前后文的距离由 4 个参数控制，参见 \normalsize 的定义
-% 公式改成 (1-1) 的形式，本科还要在前面加上 "式" 字
+% 公式形式是 "式（1-1）"
 \def\make@df@tag{\@ifstar\bnu@make@df@tag@@\make@df@tag@@@}
 \def\bnu@make@df@tag@@#1{\gdef\df@tag{\bnu@maketag{#1}\def\@currentlabel{#1}}}
 \renewcommand{\eqref}[1]{\textup{(\ref{#1})}}
@@ -584,7 +589,7 @@
 \setcounter{tocdepth}{3}
 
 
-% 每章标题行前空 6 磅，后空 0 磅
+% 每章标题行前空 6pt，后空 0pt
 \renewcommand\tableofcontents{%
 	\bnu@chapter*[]{\contentsname}
 	\sanhao[1.5]\@starttoc{toc}\normalsize}
@@ -724,7 +729,7 @@
 				\par\vskip1.9cm
 			\end{center}
 			\begin{flushleft}
-				\hskip0.3cm \sanhao[1] \bf \hei \bnu@thesistitlepre
+				\hskip0.3cm \sanhao[1] \bf \hei \bnu@bachelor@thesistitle@pre
 			\end{flushleft}
 			\begin{center}
 				\sanhao[1] \song \bf \underline{\bnu@ctitle}
@@ -793,7 +798,7 @@
 \newcommand{\bnu@makeabstract}{%
 	\cleardoublepage
 
-	% 中文摘要：四号宋体，行距20磅
+	% 中文摘要：四号宋体，行距 20pt
 	\bnu@chapter*[\cabstractname]{}
 	\pagestyle{bnu@plain}
 	\pagenumbering{Roman}
