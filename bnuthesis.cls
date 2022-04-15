@@ -724,8 +724,9 @@
 		\vspace*{-1.8cm}
 		\parbox[b][2.4cm][t]{\textwidth}{\ifbnu@secret\hfill{\sihao\bnu@secret@title}\else\rule{1cm}{0cm}\fi}
 		\vskip0.3cm
-		\ifbnu@bachelor\includegraphics[width=7.96cm]{BNU_name_black.pdf}\else
-			\includegraphics[width=7.96cm]{BNU_name_red.pdf}
+		% 毛爷爷的北京师范大学
+		\ifbnu@bachelor\includegraphics[width=7.5cm]{BNU_name_black.pdf}\else
+			\includegraphics[width=7.5cm]{BNU_name_red.pdf}
 		\fi
 		
 		
@@ -733,23 +734,35 @@
 			\renewcommand{\baselinestretch}{1.5}
 			\begin{center}
 				\vskip-0.4cm
-				{\xiaochu[1.2]\bf \song \ziju{0.21cm}\bnu@bachelor@subtitle}
+				% 本科毕业论文（设计）｜硕士学位论文｜博士学位论文
+				\ifbnu@bachelor
+        			{\xiaochu[1.2] \ziju{0.15cm} \bf \song \bnu@bachelor@subtitle}\fi
+      			\ifbnu@master
+        			{\chuhao[1.2] \ziju{8bp} \heiti \bnu@master@subtitle}\fi
+      			\ifbnu@doctor
+        			{\chuhao[1.2] \ziju{8bp} \heiti \bnu@doctor@subtitle}\fi
+				
 				\par\vskip1.9cm
 			\end{center}
-			\begin{flushleft}
-				\hskip0.3cm \sanhao[1] \bf \hei \bnu@bachelor@thesistitle@pre
-			\end{flushleft}
 			\begin{center}
-				\sanhao[1] \song \bf \underline{\bnu@ctitle}
+			% 论文题目
+			\ifbnu@bachelor
+				\begin{flushleft}
+					\hskip0.3cm \sanhao[1] \bf \heiti \bnu@bachelor@thesistitle@pre
+				\end{flushleft}
+				\vskip0.4cm \sanhao[1] \song \bf \underline{\bnu@ctitle}
+			\else
+				\sanhao[1] \song \bf \bnu@thesistitle
+			\fi
+
 			\end{center}
 		}
 		
-		
+		% 学士论文封面包括：部院系、专业、学号、学生姓名、指导教师、指导教师职称、指导教师单位
+		\ifbnu@bachelor
 		\parbox[t][9.0cm][t]{\paperwidth-9cm}{
 			\sanhao[1] \ \\ \ \\ \\ \vskip0.2cm
 			
-			
-			% 封面排版
 			\sihao[1.6] \song \bf
 			\bnu@buyuanxi                 \bnu@title@sep \hspace{1em} \bnu@cbuyuanxi\vskip0.33cm
 			\bnu@zhuanye                  \bnu@title@sep \hspace{1em} \bnu@czhuanye\vskip0.33cm
@@ -757,8 +770,12 @@
 			\bnu@xueshengxingming         \bnu@title@sep \hspace{1em} \bnu@cxueshengxingming\vskip0.33cm
 			\bnu@zhidaojiaoshi            \bnu@title@sep \hspace{1em} \bnu@czhidaojiaoshi\vskip0.33cm
 			\bnu@zhidaojiaoshizhicheng    \bnu@title@sep \hspace{1em} \bnu@czhidaojiaoshizhicheng\vskip0.33cm
-			\bnu@zhidaojiaoshidanwei      \bnu@title@sep \hspace{1em} \bnu@czhidaojiaoshidanwei\vskip0.33cm
-		}
+			\bnu@zhidaojiaoshidanwei      \bnu@title@sep \hspace{1em} \bnu@czhidaojiaoshidanwei\vskip0.33cm}
+		\else
+		% 博士（硕士）论文包括：作者、导师、系别年级、学号、学科专业、完成日期
+			{}
+		\fi
+		
 		
 		\vskip3.0cm
 		\begin{center}
