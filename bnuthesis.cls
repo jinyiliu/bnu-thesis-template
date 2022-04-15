@@ -30,9 +30,13 @@
 \def\bnuthesis{\textsc{BNUThesis}}
 \def\version{1.51}
 \newif\ifbnu@bachelor\bnu@bachelorfalse
+\newif\ifbnu@master\bnu@masterfalse
+\newif\ifbnu@doctor\bnu@doctorfalse
 \newif\ifbnu@secret\bnu@secretfalse
 \newif\ifbnu@twoside\bnu@twosidefalse
 \DeclareOption{bachelor}{\bnu@bachelortrue}
+\DeclareOption{master}{\bnu@mastertrue}
+\DeclareOption{doctor}{\bnu@doctortrue}
 \DeclareOption{secret}{\bnu@secrettrue}
 \DeclareOption{twoside}{\bnu@twosidetrue}
 
@@ -70,6 +74,8 @@
     \ifbnu@doctor\relax\else
       \ClassError{bnuthesis}%
                  {You have to specify one of thesis options: bachelor, master or doctor.}{}
+    \fi
+  \fi
 \fi
 
 % 检查用户指定的选项和实际编译命令是否冲突
@@ -718,7 +724,9 @@
 		\vspace*{-1.8cm}
 		\parbox[b][2.4cm][t]{\textwidth}{\ifbnu@secret\hfill{\sihao\bnu@secret@title}\else\rule{1cm}{0cm}\fi}
 		\vskip0.3cm
-		\includegraphics[width=7.96cm]{BNU_name_black.pdf}
+		\ifbnu@bachelor\includegraphics[width=7.96cm]{BNU_name_black.pdf}\else
+			\includegraphics[width=7.96cm]{BNU_name_red.pdf}
+		\fi
 		
 		
 		\parbox[t][7cm][t]{\paperwidth-6.5cm}{
