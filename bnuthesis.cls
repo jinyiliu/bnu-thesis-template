@@ -103,7 +103,8 @@
 % 中文支持宏包
 \ifbnu@xetex
 	\RequirePackage{xltxtra, xunicode}
-	\RequirePackage[CJKnumber,BoldFont,normalindentfirst]{xeCJK}
+	\RequirePackage[BoldFont]{xeCJK}
+	\RequirePackage{CJKnumb}
 	% 全角标点符号
 	\punctstyle{quanjiao}
 	\def\CJK@null{\kern\CJKnullspace\hskip \f@size \p@\kern\CJKnullspace}
@@ -114,20 +115,20 @@
 	\newcommand*{\fontsong}{SimSun}					% 宋体
 	\newcommand*{\fonthei}{SimHei}					% 黑体
 	\newcommand*{\fontkai}{KaiTi}					% 楷体
-	\newcommand*{\fontfs}{FangSong}					% 仿宋
+	\newcommand*{\fontfs}{FangSong}					% 仿宋
 	\newcommand*{\fontli}{LiSu}						% 隶书
 	\newcommand*{\fontyou}{YouYuan}					% 幼圆
 	
 	
-	\setCJKmainfont[AutoFakeBold = {2.5}, ItalicFont = \fontkai]{\fontsong}		% 主要字体
-	\setCJKsansfont[AutoFakeBold = {3}]{\fonthei}								% 无衬线字体
-	\setCJKmonofont{\fontkai}													% 等宽字体
-	\setCJKfamilyfont{song}[AutoFakeBold = {2.5}]{\fontsong}
-	\setCJKfamilyfont{hei}[AutoFakeBold = {3}]{\fonthei}
-	\setCJKfamilyfont{kai}{\fontkai}
-	\setCJKfamilyfont{fs}{\fontfs}
-	\setCJKfamilyfont{li}{\fontli}
-	\setCJKfamilyfont{you}{\fontyou}
+	\setCJKmainfont[Path=fonts/, AutoFakeBold = {2.5}, ItalicFont = simkai.ttf]{simsun.ttc}  % 主要字体
+	\setCJKsansfont[Path=fonts/, AutoFakeBold = {3}]{simhei.ttf}        % 无衬线字体
+	\setCJKmonofont[Path=fonts/]{simkai.ttf}             % 等宽字体
+	\setCJKfamilyfont{song}[Path=fonts/, AutoFakeBold = {2.5}]{simsun.ttc}
+	\setCJKfamilyfont{hei}[Path=fonts/, AutoFakeBold = {3}]{simhei.ttf}
+	\setCJKfamilyfont{kai}[Path=fonts/]{simkai.ttf}
+	\setCJKfamilyfont{fs}[Path=fonts/]{simfang.ttf}
+	\setCJKfamilyfont{li}[Path=fonts/]{simli.ttf}
+	\setCJKfamilyfont{you}[Path=fonts/]{simyou.ttf}
 	
 	
 	\setmainfont{Times New Roman}
@@ -147,14 +148,6 @@
                  	{\RequirePackage{arial}}
                  	{\ClassWarning{bnuthesis}{no arial.sty availiable!}}\fi
 \fi
-
-
-
-
-% 可拷贝的 PDF
-\ifbnu@dvips\else
-	\ifbnu@xetex\else
-		\RequirePackage{ccmap}\fi\fi
 
 
 
@@ -181,11 +174,10 @@
 	breaklinks=true,
 	colorlinks=false,
 	plainpages=false,
-	pdfpagelabels,
 	pdfborder=0 0 0}
 
 
-\ifbnu@dvips\RequirePackage{breakurl}\fi			% dvips 格式下网址断字有问题，加入这个包解决
+\ifbnu@dvips\RequirePackage{breakurl}\fi		% dvips 格式下网址断字有问题，加入这个包解决
 \urlstyle{same}									% 设置 URL 样式
 \RequirePackage{hypernat}						% hypernat 让 hyperref 和 natbib 协调的工作
 
@@ -214,7 +206,7 @@
 % 重定义字体命令
 \newcommand{\song}{\CJKfamily{song}}			% 宋体
 \def\songti{\song}
-\newcommand{\fs}{\CJKfamily{fs}}				% 仿宋
+\newcommand{\fs}{\CJKfamily{fs}}				% 仿宋
 \def\fangsong{\fs}
 \newcommand{\kai}{\CJKfamily{kai}}				% 楷体
 \def\kaishu{\kai}
@@ -362,24 +354,7 @@
   
 
 % 脚注
-% 从 perpage.sty 中抽取代码，使 footnote 按页编号
-\newcommand*\MakePerPage[2][\@ne]{%
-	\expandafter\def\csname c@pchk@#2\endcsname{\c@pchk@{#2}{#1}}%
-	\newcounter{pcabs@#2}%
-	\@addtoreset{pchk@#2}{#2}
-	}
-\def\new@pagectr#1{\@newl@bel{pchk@#1}}
-\def\c@pchk@#1#2{\z@=\z@
-	\begingroup
-	\expandafter\let\expandafter\next\csname pchk@#1@\arabic{pcabs@#1}\endcsname
-	\addtocounter{pcabs@#1}\@ne
-	\expandafter\ifx\csname pchk@#1@\arabic{pcabs@#1}\endcsname\next
-	\else \setcounter{#1}{#2}\fi
-	\protected@edef\next{%
-    	\string\new@pagectr{#1}{\arabic{pcabs@#1}}{\noexpand\thepage}}%
-	\protected@write\@auxout{}{\next}%
-	\endgroup\global\z@}
-\MakePerPage{footnote}
+\RequirePackage[perpage]{footmisc}
 
 
 
@@ -738,7 +713,7 @@
 		\vspace*{-1.8cm}
 		\parbox[b][2.4cm][t]{\textwidth}{\ifbnu@secret\hfill{\sihao\bnu@secret@title}\else\rule{1cm}{0cm}\fi}
 		\vskip0.3cm
-		\includegraphics[width=7.96cm]{BNU_name_red.pdf}
+		\includegraphics[width=7.96cm]{BNU_name_black.pdf}
 		
 		
 		\parbox[t][7cm][t]{\paperwidth-6.5cm}{
