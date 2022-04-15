@@ -738,7 +738,7 @@
 		\vspace*{-1.8cm}
 		\parbox[b][2.4cm][t]{\textwidth}{\ifbnu@secret\hfill{\sihao\bnu@secret@title}\else\rule{1cm}{0cm}\fi}
 		\vskip0.3cm
-		\includegraphics[width=7.96cm]{BNU_name_red.jpg}
+		\includegraphics[width=7.96cm]{BNU_name_red.pdf}
 		
 		
 		\parbox[t][7cm][t]{\paperwidth-6.5cm}{
