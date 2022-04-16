@@ -780,37 +780,60 @@
 		}
 		\fi
 		
-		
-		
 		\begin{center}
 			\ifbnu@bachelor{\vskip3.0cm\xiaosi \song\ziju{4bp} \bf \bnu@org}\else
-			{ \sanhao \fs \bnu@xueweiban}\fi
+			{\sanhao\fs\bnu@xueweiban}\fi
 		\end{center}
 	\end{center}}
 
 
 
-% 设置封面字体
+% 原创性声明，授权使用书
 \newcommand\bnu@justspace[2][6em]{\hskip1pt {\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
 \newcommand\bnu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
-\newcommand{\bnu@authorization@mk}{%
-	\vspace*{-0.1cm}
-	\begin{center}\xiaosi\song\bf {\bnu@declaretitle}\end{center}
-	\vskip10pt \xiaosi[1.8]  \bnu@declaration\par
-	\vskip14pt  \bnu@declsign\par
-	\sihao[1.6]\song \ \\ \ \\ \ \\
-	\begin{center}\xiaosi\song\bf {\bnu@authtitle}\end{center}
-	\vskip10pt \xiaosi[1.8]  \bnu@authorization\par \xiaosi[1.8] \bnu@authorizationplus
-	\vskip1.2cm
-	\begingroup
-		\parindent0pt\xiaosi
-		\hspace*{2em}\bnu@authorsig\bnu@justspace[9.5em]\relax\hfill
-			\bnu@org\bnu@justspace[5.5em]\relax\hspace*{3cm}\\[18pt]
-			\hspace*{2em}\bnu@teachersig\bnu@justspace[9.5em]\relax\hfill
-			\bnu@org\bnu@justspace[5.5em]\relax\hspace*{3cm}
-	\endgroup
+\newcommand{\bnu@authorization@mk}{\vspace*{-0.1cm}
+	\begin{center}
+		\ifbnu@bachelor
+			% 学士学位论文诚信承诺书
+			{\xiaosi\song\bf\bnu@declaretitle}
+		\else\vskip1cm
+			% 博士（硕士）论文原创性声明
+			{\sanhao\song\bf\bnu@declaretitle}
+		\fi
+	\end{center}
+	\vskip10pt \xiaosi[1.8]  \bnu@declaration
+	\vskip14pt  \bnu@declsign
+	
+	\begin{center}
+		\ifbnu@bachelor\vskip2.5cm
+			\xiaosi\song\bf\bnu@authtitle
+		\else\vskip4cm
+			\sanhao\song\bf\bnu@authtitle
+		\fi
+	\end{center}
+	\vskip10pt\xiaosi[1.8]\bnu@authorization
+	\ifbnu@bachelor\vskip1cm\xiaosi[1.8]\bnu@authorizationplus\fi
+	
+	\ifbnu@bachelor\vskip1.2cm
+		\begingroup
+			\parindent0pt\xiaosi
+			\hspace*{2em}\bnu@authorsig\bnu@justspace[9.5em]\relax\hfill
+				\bnu@org\bnu@justspace[5.5em]\relax\hspace*{3cm}\\[18pt]
+				\hspace*{2em}\bnu@teachersig\bnu@justspace[9.5em]\relax\hfill
+				\bnu@org\bnu@justspace[5.5em]\relax\hspace*{3cm}
+		\endgroup
+	\else\vskip1.2cm
+    	\begingroup
+      		\parindent0pt\xiaosi
+      		\hspace*{2em}\bnu@authorsig\bnu@underline[9.5em]\relax\hfill%
+                \bnu@frontdate\bnu@underline[9.5em]\relax\hspace*{3cm}\\[18pt]
+      			\hspace*{2em}\bnu@teachersig\bnu@underline[9.5em]\relax\hfill%
+              	\bnu@frontdate\bnu@underline[9.5em]\relax\hspace*{3cm}
+    	\endgroup
+	\fi
 }
 
+% 制作封面第一页以及原创性声明、授权使用书等内容
 \newcommand{\makecover}{
 	\phantomsection
 	\pdfbookmark[-1]{\bnu@ctitle}{ctitle}
