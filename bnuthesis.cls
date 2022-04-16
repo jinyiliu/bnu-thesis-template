@@ -848,38 +848,43 @@
 
 
 % 摘要格式
-\newcommand{\bnu@makeabstract}{%
-	\cleardoublepage
+\newcommand{\bnu@makeabstract}{\cleardoublepage
 
 	% 中文摘要：四号宋体，行距 20pt
 	\bnu@chapter*[\cabstractname]{}
 	\pagestyle{bnu@plain}
 	\pagenumbering{Roman}
 	\begin{center}
-		\sanhao[1.6] \bf \hei \bnu@ctitle \par
+		\sanhao[1.6] {\ifbnu@bachelor\bf\fi} \hei \bnu@ctitle \par
 		\vskip20bp
-		\xiaosan[1.6] \bf \hei \cabstractname
+		\xiaosan[1.6] {\ifbnu@bachelor\bf\fi} \hei \cabstractname
 	\end{center}
 	\vskip20bp
-	\sihao[1.6] \song \par \bnu@cabstract					% 摘要内容
+	% 摘要内容：学士论文四号宋体，博士（硕士）论文小四宋体
+	\ifbnu@bachelor\sihao[1.6]\else\xiaosi[1.6]\fi \song \par \bnu@cabstract
 	\vskip20bp
 	\setbox0=\hbox{{\sihao \hei\bnu@ckeywords@title}}		% 关键词：四号黑体
 	\noindent\hangindent\wd0\hangafter1
-	\box0 \sihao \song \bnu@ckeywords						% 关键词内容：四号宋体
+	% 关键词内容：学士论文四号宋体，博士（硕士）论文小四宋体
+	\box0 {\ifbnu@bachelor\sihao\else\xiaosi\fi} \song \bnu@ckeywords
 	
 	% 英文摘要：小三号
 	\bnu@chapter*[\eabstractname]{}
 	\begin{center}
+	% 英文摘要题目：三号字体
 	\sanhao[1.6]\bf \bnu@etitle \par
-	\vskip20bp  	
-	\xiaosan[1.6]\bf \eabstractname
-	\end{center}
-	\vskip20bp 
-	\sihao[1.6] \par \bnu@eabstract							% 摘要内容：四号，Times New Roman 字体，单倍行距
 	\vskip20bp
-	\setbox0=\hbox{\textbf \bnu@ekeywords@title}
+	\sihao[1.6]\bf \eabstractname
+	\end{center}
+	\vskip20bp
+	% 学士论文摘要内容：四号，Times New Roman 字体，单倍行距
+	% 博士（硕士）论文摘要内容：小四，Times New Roman 字体，单倍行距
+	{\ifbnu@bachelor\sihao[1.6]\else\xiaosi[1.6] \fi} \par \bnu@eabstract
+	\vskip20bp
+	% KEY WORDS 小四号加粗
+	\setbox0=\hbox{\bf \xiaosi \bnu@ekeywords@title}
 	\noindent\hangindent\wd0\hangafter1
-	\box0\bnu@ekeywords
+	\box0\hskip7pt\bnu@ekeywords
 	}
 
 
