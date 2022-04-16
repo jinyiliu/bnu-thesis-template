@@ -130,7 +130,7 @@
 	\newcommand*{\fontli}{LiSu}						% 隶书
 	\newcommand*{\fontyou}{YouYuan}					% 幼圆
 	
-	
+	% 自动调用 fonts 文件夹里的字体
 	\setCJKmainfont[Path=fonts/, AutoFakeBold = {2.5}, ItalicFont = simkai.ttf]{simsun.ttc}  % 主要字体
 	\setCJKsansfont[Path=fonts/, AutoFakeBold = {3}]{simhei.ttf}        % 无衬线字体
 	\setCJKmonofont[Path=fonts/]{simkai.ttf}             % 等宽字体
@@ -661,6 +661,8 @@
 \def\bnu@cdepartment{}
 \bnu@define@term{cmajor}
 \def\csubject{\cmajor}
+
+% 学士学位论文封面
 \bnu@define@term{cbuyuanxi}
 \bnu@define@term{czhuanye}
 \bnu@define@term{cxuehao}
@@ -668,10 +670,19 @@
 \bnu@define@term{czhidaojiaoshi}
 \bnu@define@term{czhidaojiaoshizhicheng}
 \bnu@define@term{czhidaojiaoshidanwei}
-\bnu@define@term{cauthor}
-\bnu@define@term{csupervisor}
-\bnu@define@term{cassosupervisor}
-\bnu@define@term{ccosupervisor}
+\bnu@define@term{fudaojiaoshi}
+
+% 博士（硕士）学位论文封面标题格式
+\bnu@define@term{czuozhe}
+\bnu@define@term{cdaoshi}
+\bnu@define@term{cxibienianji}
+\bnu@define@term{cxuehao}
+\bnu@define@term{cxuekezhuanye}
+\bnu@define@term{cwanchengriqi}
+\bnu@define@term{fuzhidaojiaoshi}
+\bnu@define@term{lianhezhidaojiaoshi}
+
+
 \bnu@define@term{cnum}
 \bnu@define@term{cdate}
 \bnu@define@term{etitle}
@@ -680,10 +691,6 @@
 \def\eaffil{\edepartment}
 \bnu@define@term{emajor}
 \def\esubject{\emajor}
-\bnu@define@term{eauthor}
-\bnu@define@term{esupervisor}
-\bnu@define@term{eassosupervisor}
-\bnu@define@term{ecosupervisor}
 \bnu@define@term{edate}
 
 
@@ -725,10 +732,7 @@
 		\parbox[b][2.4cm][t]{\textwidth}{\ifbnu@secret\hfill{\sihao\bnu@secret@title}\else\rule{1cm}{0cm}\fi}
 		\vskip0.3cm
 		% 毛爷爷的北京师范大学
-		\ifbnu@bachelor\includegraphics[width=7.5cm]{BNU_name_black.pdf}\else
-			\includegraphics[width=7.5cm]{BNU_name_red.pdf}
-		\fi
-		
+		\includegraphics[width=7.5cm]{\bnu@textlogo}
 		
 		\parbox[t][7cm][t]{\paperwidth-6.5cm}{
 			\renewcommand{\baselinestretch}{1.5}
@@ -750,7 +754,7 @@
 				\begin{flushleft}
 					\hskip0.3cm \sanhao[1] \bf \heiti \bnu@bachelor@thesistitle@pre
 				\end{flushleft}
-				\vskip0.4cm \sanhao[1] \song \bf \underline{\bnu@ctitle}
+				\vskip0.4cm \sanhao[1] \bf \song \underline{\bnu@ctitle}
 			\else
 				\sanhao[1] \song \bf \bnu@thesistitle
 			\fi
@@ -761,25 +765,34 @@
 		% 学士论文封面包括：部院系、专业、学号、学生姓名、指导教师、指导教师职称、指导教师单位
 		\ifbnu@bachelor
 		\parbox[t][9.0cm][t]{\paperwidth-9cm}{
-			\sanhao[1] \ \\ \ \\ \\ \vskip0.2cm
+		\sanhao[1] \ \\ \ \\ \\ \vskip0.2cm
 			
-			\sihao[1.6] \song \bf
-			\bnu@buyuanxi                 \bnu@title@sep \hspace{1em} \bnu@cbuyuanxi\vskip0.33cm
-			\bnu@zhuanye                  \bnu@title@sep \hspace{1em} \bnu@czhuanye\vskip0.33cm
-			\bnu@xuehao                   \bnu@title@sep \hspace{1em} \bnu@cxuehao\vskip0.33cm
-			\bnu@xueshengxingming         \bnu@title@sep \hspace{1em} \bnu@cxueshengxingming\vskip0.33cm
-			\bnu@zhidaojiaoshi            \bnu@title@sep \hspace{1em} \bnu@czhidaojiaoshi\vskip0.33cm
-			\bnu@zhidaojiaoshizhicheng    \bnu@title@sep \hspace{1em} \bnu@czhidaojiaoshizhicheng\vskip0.33cm
-			\bnu@zhidaojiaoshidanwei      \bnu@title@sep \hspace{1em} \bnu@czhidaojiaoshidanwei\vskip0.33cm}
+		\sihao[1.6] \song \bf
+		\bnu@buyuanxi\bnu@title@sep\hspace{1em}\bnu@cbuyuanxi\vskip0.33cm
+		\bnu@zhuanye\bnu@title@sep\hspace{1em}\bnu@czhuanye\vskip0.33cm
+		\bnu@bachelor@xuehao\bnu@title@sep\hspace{1em}\bnu@cxuehao\vskip0.33cm
+		\bnu@xueshengxingming\bnu@title@sep\hspace{1em}\bnu@cxueshengxingming\vskip0.33cm
+		\bnu@zhidaojiaoshi\bnu@title@sep\hspace{1em}\bnu@czhidaojiaoshi\vskip0.33cm
+		\bnu@zhidaojiaoshizhicheng\bnu@title@sep\hspace{1em}\bnu@czhidaojiaoshizhicheng\vskip0.33cm
+		\bnu@zhidaojiaoshidanwei\bnu@title@sep\hspace{1em}\bnu@czhidaojiaoshidanwei\vskip0.33cm}
 		\else
 		% 博士（硕士）论文包括：作者、导师、系别年级、学号、学科专业、完成日期
-			{}
+		\parbox[t][9.0cm][t]{\paperwidth-12cm}{
+		\sihao[1.6]
+		\fs\bnu@zuozhe\bnu@title@sep\hspace{1em}\song{\bf\bnu@czuozhe}\vskip0.33cm
+		\fs\bnu@daoshi\bnu@title@sep\hspace{1em}\song{\bf\bnu@cdaoshi}\vskip0.33cm
+		\fs\bnu@xibienianji\bnu@title@sep\hspace{1em}\song{\bf\bnu@cxibienianji}\vskip0.33cm
+		\fs\bnu@xuehao\bnu@title@sep\hspace{1em}\song{\bf\bnu@cxuehao}\vskip0.33cm
+		\fs\bnu@xuekezhuanye\bnu@title@sep\hspace{1em}\song{\bf\bnu@cxuekezhuanye}\vskip0.33cm
+		\fs\bnu@wanchengriqi\bnu@title@sep\hspace{1em}\song{\bf\bnu@cwanchengriqi}\vskip0.33cm
+		}
 		\fi
 		
 		
-		\vskip3.0cm
+		
 		\begin{center}
-			{\xiaosi \song\ziju{4bp} \bf \bnu@org}
+			\ifbnu@bachelor{\vskip3.0cm\xiaosi \song\ziju{4bp} \bf \bnu@org}\else
+			{ \sanhao \fs \bnu@xueweiban}\fi
 		\end{center}
 	\end{center}}
 
