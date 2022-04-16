@@ -121,15 +121,6 @@
 	\def\CJK@null{\kern\CJKnullspace\hskip \f@size \p@\kern\CJKnullspace}
 	\defaultfontfeatures{Mapping=tex-text}
 	
-	
-	% Macbook 字体设置
-	\newcommand*{\fontsong}{SimSun}					% 宋体
-	\newcommand*{\fonthei}{SimHei}					% 黑体
-	\newcommand*{\fontkai}{KaiTi}					% 楷体
-	\newcommand*{\fontfs}{FangSong}					% 仿宋
-	\newcommand*{\fontli}{LiSu}						% 隶书
-	\newcommand*{\fontyou}{YouYuan}					% 幼圆
-	
 	% 自动调用 fonts 文件夹里的字体
 	\setCJKmainfont[Path=fonts/, AutoFakeBold = {2.5}, ItalicFont = simkai.ttf]{simsun.ttc}  % 主要字体
 	\setCJKsansfont[Path=fonts/, AutoFakeBold = {3}]{simhei.ttf}        % 无衬线字体
@@ -159,6 +150,22 @@
                  	{\RequirePackage{arial}}
                  	{\ClassWarning{bnuthesis}{no arial.sty availiable!}}\fi
 \fi
+
+
+
+% 重定义字体命令
+\newcommand{\song}{\CJKfamily{song}}			% 宋体
+\def\songti{\song}
+\newcommand{\fs}{\CJKfamily{fs}}				% 仿宋
+\def\fangsong{\fs}
+\newcommand{\kai}{\CJKfamily{kai}}				% 楷体
+\def\kaishu{\kai}
+\newcommand{\hei}{\CJKfamily{hei}}				% 黑体
+\def\heiti{\hei}
+\newcommand{\li}{\CJKfamily{li}}				% 隶书
+\def\lishu{\li}
+\newcommand{\you}{\CJKfamily{you}}				% 幼圆
+\def\youyuan{\you}
 
 
 
@@ -212,21 +219,6 @@
 	\clpage
 	\@mainmattertrue}
 
-
-
-% 重定义字体命令
-\newcommand{\song}{\CJKfamily{song}}			% 宋体
-\def\songti{\song}
-\newcommand{\fs}{\CJKfamily{fs}}				% 仿宋
-\def\fangsong{\fs}
-\newcommand{\kai}{\CJKfamily{kai}}				% 楷体
-\def\kaishu{\kai}
-\newcommand{\hei}{\CJKfamily{hei}}				% 黑体
-\def\heiti{\hei}
-\newcommand{\li}{\CJKfamily{li}}				% 隶书
-\def\lishu{\li}
-\newcommand{\you}{\CJKfamily{you}}				% 幼圆
-\def\youyuan{\you}
 
 
 % 避免字号选择和行距的紧耦合
