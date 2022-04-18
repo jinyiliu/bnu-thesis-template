@@ -762,6 +762,7 @@
 		\vspace*{-1.8cm}
 		\parbox[b][2.4cm][t]{\textwidth}{\ifbnu@secret\hfill{\sihao\bnu@secret@title}\else\rule{1cm}{0cm}\fi}
 		\vskip0.3cm
+		\ifbnu@bachelor\vspace*{-0.75cm}]\fi
 		% 毛爷爷的北京师范大学
 		\includegraphics[width=7.5cm]{\bnu@textlogo}
 		
