@@ -502,13 +502,11 @@
 
 
 % 正文标题：均加粗，段前后均 0.5 行
-% 一级标题：三号黑体，加粗
-% 二级标题：小三号黑体
-% 三级标题：四号黑体
+% 一级标题：学士论文使用三号黑体加粗，博士（硕士）论文使用三号黑体
 \def\@makechapterhead#1{
 	\vspace*{0.5\baselineskip}%
 	{\parindent \z@ \centering
-		\bf \hei \csname bnu@title@font\endcsname\sanhao[1.6]
+		\ifbnu@bachelor\bf\fi \hei \csname bnu@title@font\endcsname\sanhao[1.6]
 		\ifnum \c@secnumdepth >\m@ne
 			\@chapapp\hskip1em
 		\fi
@@ -521,7 +519,7 @@
 \def\@makeschapterhead#1{%
 	\vspace*{0.5\baselineskip}%
 	{\parindent \z@ \centering
-		\bf \hei \csname bnu@title@font\endcsname\sanhao[1.6]
+		\ifbnu@bachelor\bf\fi \hei \csname bnu@title@font\endcsname\sanhao[1.6]
 			\def\@tempa{#1}
 			\def\@tempb{\eabstractname}
 			\ifx\@tempa\@tempb\bfseries\fi
@@ -563,20 +561,23 @@
 
 \RequirePackage{titlesec}
 \titlespacing{\chapter}{0pt}{0.5\baselineskip}{0.5\baselineskip}
+% 二级标题：学士论文使用小三号黑体加粗，博士（硕士）论文使用小三号黑体
 \renewcommand\section{\@startsection {section}{1}{\z@}%
                      { -24bp\@plus -1ex \@minus -.2ex}%
                      {6bp \@plus .2ex}%
-                     {\bf \hei \csname bnu@title@font\endcsname\xiaosan[1.429]}}
+					 {\ifbnu@bachelor\bf\fi \hei \csname bnu@title@font\endcsname\xiaosan[1.429]}}
 
+% 三级标题：学士论文使用四号黑体加粗，博士（硕士）论文使用四号黑体
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
                         {-16bp\@plus -1ex \@minus -.2ex}%
                         {6bp \@plus .2ex}%
-                        {\bf \hei \csname bnu@title@font\endcsname\sihao[1.538]}}
+                        {\ifbnu@bachelor\bf\fi \hei \csname bnu@title@font\endcsname\sihao[1.538]}}
 
+% 四级标题：学士论文使用小四号黑体加粗，博士（硕士）论文使用小四号黑体
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                            {-16bp\@plus -1ex \@minus -.2ex}%
                            {6bp \@plus .2ex}%
-                           {\bf \hei \csname bnu@title@font\endcsname\xiaosi[1.667]}}
+                           {\ifbnu@bachelor\bf\fi \hei \csname bnu@title@font\endcsname\xiaosi[1.667]}}
 
 
 
