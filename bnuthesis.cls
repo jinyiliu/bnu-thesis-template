@@ -582,34 +582,32 @@
 
 
 
-% 目录格式
+% 目录格式 --------------------------------------------------------
 % 最多涉及 4 层，即 x.x.x.x
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
-
-% 每章标题行前空 6pt，后空 0pt
-\renewcommand\tableofcontents{%
-	\bnu@chapter*[]{\contentsname}
-	\sanhao[1.5]\@starttoc{toc}\normalsize}
+% 目录是否使用 Arial 字体
 \ifbnu@arialtoc
 	\def\bnu@toc@font{\sffamily}\fi
 \def\@tocrmarg{2em}
 \def\@dotsep{1}
+
 \def\@dottedtocline#1#2#3#4#5{%
-	\ifnum #1>\c@tocdepth \else
-	\vskip \z@ \@plus.2\p@
-		{\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
-			\parindent #2\relax\@afterindenttrue
-			\interlinepenalty\@M\leavevmode\@tempdima #3\relax
-			\advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
-			{\hei \csname bnu@toc@font \endcsname #4}\nobreak
-			\leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{$\cdot$}\mkern \@dotsep mu$}\hfill
-			\nobreak{\normalsize \normalcolor #5}%
-			\par}%
-	\fi}
+   \ifnum #1>\c@tocdepth \else
+     \vskip \z@ \@plus.2\p@
+      {\leftskip #2\relax \rightskip \@tocrmarg \parfillskip -\rightskip
+     	\parindent #2\relax\@afterindenttrue
+      	\interlinepenalty\@M\leavevmode\@tempdima #3\relax
+      	\advance\leftskip \@tempdima \null\nobreak\hskip -\leftskip
+      	{\ifbnu@bachelor\hei\fi \csname bnu@toc@font \endcsname #4}\nobreak
+      	\leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{$\cdot$}\mkern \@dotsep mu$}\hfill
+      	\nobreak{\normalfont \normalcolor #5}%
+      	\par}%
+    \fi}
 
 % 目录格式
+\ifbnu@bachelor % 学士论文目录格式
 \titlecontents{chapter}[0em]
 {\vspace{.05\baselineskip}\hei}
 {\sanhao[0.0]{\thecontentslabel}~\hspace{.5em}} {}
@@ -631,8 +629,48 @@
 {\dotfill\contentspage[{\makebox[0pt][r]{\thecontentspage}}]}
 [\vspace{.05\baselineskip}]
 
+\else % 博士（硕士）论文目录格式
+	\renewcommand*\l@chapter[2]{\ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}
+    \vskip 4bp \@plus\p@
+    \setlength\@tempdima{4em}
+    \begingroup
+    \parindent \z@ \rightskip \@pnumwidth
+    \parfillskip -\@pnumwidth
+    \leavevmode
+    \advance\leftskip\@tempdima
+    \hskip -\leftskip
+    {\ifbnu@bachelor\sffamily\else\csname bnu@toc@font\endcsname\fi \song \xiaosi[1.5] \bf #1}
+    \xiaosi[1.5]
+    \leaders\hbox{$\m@th\mkern \@dotsep mu\hbox{$\cdot$}\mkern \@dotsep mu$}\hfill
+    \nobreak{\normalfont\normalcolor #2}\par
+    \penalty\@highpenalty
+	\endgroup
+ \fi}
+
+\renewcommand*\l@section{\@dottedtocline{1}{1em}{2.3em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{2em}{3.3em}}
+\renewcommand*\l@subsubsection{\@dottedtocline{3}{3em}{4.3em}}
+\fi
+
+\def\bnu@starttoc#1{\let\oldnumberline\numberline
+	\def\numberline##1{\oldnumberline{\csname #1name\endcsname\hskip.4em ##1}}
+	\@starttoc{\csname ext@#1\endcsname}
+	\let\numberline\oldnumberline}
+\def\bnu@listof#1{\@ifstar
+		{\bnu@chapter*[]{\csname list#1name\endcsname}\bnu@starttoc{#1}}
+		{\bnu@chapter*{\csname list#1name\endcsname}\bnu@starttoc{#1}}}
 
 
+%\renewcommand\tableofcontents{%
+%	\bnu@chapter*[]{\contentsname}
+%	\sanhao[1.5]\@starttoc{toc}\normalsize}
+
+\renewcommand\tableofcontents{\bnu@chapter*[]{\contentsname}
+	\ifbnu@bachelor\sanhao[1.5]\else\xiaosi[1.5]\fi \@starttoc{toc}\normalsize}
+
+
+% 目录格式 END ----------------------------------------------------
 
 % 封面和封底
 % 方便定义封面的一些替换命令
