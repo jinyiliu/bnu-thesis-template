@@ -214,7 +214,7 @@
 	\clpage
 	\@mainmattertrue
 	\pagenumbering{arabic}
-	\pagestyle{bnu@plain}}
+	\ifbnu@bachelor\pagestyle{bnu@plain}\else\pagestyle{bnu@headings}\fi}
 \renewcommand\backmatter{
 	\clpage
 	\@mainmattertrue}
@@ -311,11 +311,12 @@
 	\let\@evenfoot=\@oddfoot}
 \def\ps@bnu@headings{%
 	\def\@oddhead{\vbox to\headheight{%
-		\hb@xt@\textwidth{\hfill\wuhao\song\leftmark\hfill}%
+		% \hb@xt@\textwidth{\hfill\wuhao\song\leftmark\hfill} % 章节标题
+		\hb@xt@\textwidth{\hfill\wuhao\song\bnu@ctitle\hfill} % 论文标题
 		\vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
 	\def\@evenhead{\vbox to\headheight{%
-		\hb@xt@\textwidth{\wuhao\song%
-		\hfill\leftmark\hfill}%
+		% \hb@xt@\textwidth{\hfill\wuhao\song\leftmark\hfill} % 章节标题
+		\hb@xt@\textwidth{\hfill\wuhao\song\bnu@ctitle\hfill} % 论文标题
 		\vskip2pt\hbox{\vrule width\textwidth height0.4pt depth0pt}}}
 	\def\@oddfoot{\hfil\wuhao\thepage\hfil}
 	\let\@evenfoot=\@oddfoot}
