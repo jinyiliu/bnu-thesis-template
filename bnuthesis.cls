@@ -504,7 +504,7 @@
 % 一级标题：学士论文使用三号黑体加粗，博士（硕士）论文使用三号黑体
 \def\@makechapterhead#1{
 	% 学士论文标题前后空和博士论文不一样
-	\vspace*{\ifbnu@bachelor 0.5\baselineskip\else 20bp\fi}%
+	\vspace*{\ifbnu@bachelor 0.5\baselineskip\else 12bp\fi}%
 	{\parindent \z@ \centering
 		\ifbnu@bachelor\bf\fi \hei \csname bnu@title@font\endcsname\sanhao[1.6]
 		\ifnum \c@secnumdepth >\m@ne
@@ -671,6 +671,15 @@
 
 
 % 目录格式 END ----------------------------------------------------
+
+
+% 插图索引
+\renewcommand\listoffigures{\bnu@listof{figure}}
+\renewcommand*\l@figure{\@dottedtocline{1}{0em}{4em}}
+% 表格索引
+\renewcommand\listoftables{\bnu@listof{table}}
+\let\l@table\l@figure
+
 
 % 封面和封底
 % 方便定义封面的一些替换命令

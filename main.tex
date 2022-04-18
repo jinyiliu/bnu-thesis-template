@@ -5,8 +5,8 @@
 %		在 MacBook 中推荐使用编译软件 Texpad
 
 
-\documentclass[bachelor]{bnuthesis}
-	\usepackage{bnutils}				
+\documentclass[master]{bnuthesis}
+	\usepackage{bnutils}
 	% 调用宏包，使用 GB/T 7714-2015 参考文献著录格式
 	\usepackage{gbt7714}
 	
@@ -18,6 +18,8 @@
 	\makecover
 	
 	\tableofcontents
+	\listoffigures % 插图索引
+	\listoftables % 表格索引
 	
 	\mainmatter
 	\include{data/chap1}
