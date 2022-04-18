@@ -275,8 +275,8 @@
 % 页边距设置
 % 每一页面的上边距和左边距侧（订口）分别留边 25mm
 % 下边距和右边距（切口）应分别留边 20mm
-\RequirePackage{geometry}
-\geometry{left=2.5cm, right=2cm, top=3.25cm, bottom=3.25cm, foot=1.5cm}
+\ifbnu@bachelor \RequirePackage{geometry}\else\RequirePackage[includehead]{geometry}\fi
+\geometry{left=2.5cm, right=2cm, top=2.5cm, bottom=3.5cm, foot=1.5cm}
 \setlength{\hoffset}{-1in} 							% 清空默认页边距	
 \ifbnu@twoside
 	\setlength{\oddsidemargin}{2.5cm}				% 奇数页左边距
@@ -505,7 +505,7 @@
 % 一级标题：学士论文使用三号黑体加粗，博士（硕士）论文使用三号黑体
 \def\@makechapterhead#1{
 	% 学士论文标题前后空和博士论文不一样
-	\vspace*{\ifbnu@bachelor 0.5\baselineskip\else 12bp\fi}%
+	\vspace*{\ifbnu@bachelor 0.5\baselineskip\else 0.0bp\fi}%
 	{\parindent \z@ \centering
 		\ifbnu@bachelor\bf\fi \hei \csname bnu@title@font\endcsname\sanhao[1.6]
 		\ifnum \c@secnumdepth >\m@ne
@@ -518,7 +518,7 @@
 	\@makeschapterhead{#1}
 	\@afterheading}
 \def\@makeschapterhead#1{%
-	\vspace*{0.5\baselineskip}%
+	\vspace*{\ifbnu@bachelor 0.5\baselineskip\else 0.0bp\fi}%
 	{\parindent \z@ \centering
 		\ifbnu@bachelor\bf\fi \hei \csname bnu@title@font\endcsname\sanhao[1.6]
 			\def\@tempa{#1}
@@ -526,7 +526,7 @@
 			\ifx\@tempa\@tempb\bfseries\fi
 		\interlinepenalty\@M
 		#1\par\nobreak
-		\vskip0.5\baselineskip}}
+		\ifbnu@bachelor\vskip0.5\baselineskip\else\vskip24bp\fi}}
 
 
 
@@ -772,7 +772,7 @@
 		\vspace*{-1.8cm}
 		\parbox[b][2.4cm][t]{\textwidth}{\ifbnu@secret\hfill{\sihao\bnu@secret@title}\else\rule{1cm}{0cm}\fi}
 		\vskip0.3cm
-		\ifbnu@bachelor\vspace*{-0.75cm}]\fi
+		\ifbnu@bachelor\vspace*{-0.25cm}\fi
 		% 毛爷爷的北京师范大学
 		\includegraphics[width=7.5cm]{\bnu@textlogo}
 		
