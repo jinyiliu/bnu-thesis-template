@@ -512,7 +512,7 @@
 			\@chapapp\hskip1em
 		\fi
 		#1\par\nobreak
-		\ifbnu@bachelor\vskip0.5\baselineskip\else\vskip24bp\fi}}
+		\ifbnu@bachelor\vskip0.5\baselineskip\else\vskip20bp\fi}}
 
 \def\@schapter#1{%
 	\@makeschapterhead{#1}
@@ -526,7 +526,7 @@
 			\ifx\@tempa\@tempb\bfseries\fi
 		\interlinepenalty\@M
 		#1\par\nobreak
-		\ifbnu@bachelor\vskip0.5\baselineskip\else\vskip24bp\fi}}
+		\ifbnu@bachelor\vskip0.5\baselineskip\else\vskip20bp\fi}}
 
 
 
@@ -962,7 +962,7 @@
 % 致谢
 \newenvironment{ack}{%
 	\bnu@chapter*[\bnu@acklongname]{\bnu@ackname}[\bnu@acklongname]}{%
-	\vskip12bp\sihao[1.5]\hei\rightline{\bnu@cxueshengxingming \hspace{1.5em}} \par \rightline{\bnu@cdate}}
+	\vskip12bp\sihao[1.5]\hei\rightline{\ifbnu@bachelor\bnu@cxueshengxingming \else\bnu@czuozhe \fi \hspace{1.2em}} \par \rightline{\bnu@cdate}}
 
 
 
