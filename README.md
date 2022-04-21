@@ -1,4 +1,4 @@
-# bnu-bachelor-thesis
+# bnu-thesis-template
 
 ![demo](figures/thesis_cover_demo.jpg)
 
