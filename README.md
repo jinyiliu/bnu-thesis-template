@@ -1,3 +1,5 @@
+谢谢所有人的支持！目前学校已经有现成的论文模板，本模版就不再开发了。
+
 # bnu-thesis-template
 
 ![demo](figures/thesis_cover_demo.jpg)
@@ -6,9 +8,7 @@
 
 北京师范大学学位论文模板，适用于本科生毕业论文（设计）、硕士学位论文、博士学位论文，基于[北师大学位论文Latex模板](http://gerry.lamost.org/blog/?p=811)和 GitHub 上的已有项目 [BNUBachelorThesis](https://github.com/xysmlx/BNUBachelorThesis) 修改。使用此模板需要先了解和掌握 Latex 和 Bibtex 基本知识，学习 Latex 可以参考北师大天文系余恒老师整理的 [LATEX 相关资源](http://202.112.85.96/wiki/doku.php/latex;resources)。
 
-本模板将持续进行更新，欢迎提出建议。
-
-需要注意的是本版本是在 MacBook 进行的开发，没有在 Windows 系统中进行过编译，并不清楚在 Windows 系统中是否能成功编译。如果能成功编译，请告知，谢谢！
+本模版在 MacBook 和 Windows 系统中均可成功编译。
 
 论文模板已经上传 Overleaf Gallery，链接为 [BNU Bachelor/Master/PhD Thesis Template](https://www.overleaf.com/latex/templates/bnu-bachelor-slash-master-slash-phd-thesis-template/nhvczzkqtrqq)，因为模板发布需要审核，所以在 Overleaf 上的论文模板会比 GitHub 的模板落后一点。
 
